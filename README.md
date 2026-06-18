@@ -89,4 +89,4 @@ Achieves stable, controllable hover. Throttle, yaw, pitch, and roll all respond 
 
 ## Acknowledgements
 
-Built by Zyad Hossameldien and Algasem Zabarah for TEJ4M at Earl of March Secondary School, 2026. Reference build guidance from the KendinYap / rcpano.net NRF24 controller design.
+Built by Zyad Hossameldien and Algasem Zabarah for TEJ4M at Earl of March Secondary School, 2026. 
