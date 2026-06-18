@@ -46,9 +46,9 @@ Separately, an **ESP32-CAM** streams live MJPEG video into a custom tactical HUD
 
 | File | Description |
 |---|---|
-| `Horizon_Transmitter.ino` | Pilot controller firmware - reads sticks/switches, builds and broadcasts the radio packet |
-| `Horizon_Receiver.ino` | Drone receiver firmware - validates packets and outputs PWM channels to the flight controller |
-| `Horizon_Camera.ino` | ESP32-CAM firmware - live MJPEG video stream and the tactical HUD web interface |
+| `TRANSMITTER` | Pilot controller firmware - reads sticks/switches, builds and broadcasts the radio packet |
+| `RECEIVER` | Drone receiver firmware - validates packets and outputs PWM channels to the flight controller |
+| `CAM HUD SYSTEM` | ESP32-CAM firmware - live MJPEG video stream and the tactical HUD web interface |
 
 ## Radio protocol
 
