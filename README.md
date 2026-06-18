@@ -1,10 +1,9 @@
 # Project Horizon
 
-A custom-built FPV quadcopter with a fully hand-made 2.4 GHz radio link, onboard FPV video, and a tactical heads-up display — designed and built from scratch as a Grade 12 TEJ4M Computer Engineering capstone.
+A custom-built FPV quadcopter with a fully hand-made 2.4 GHz radio link, onboard FPV video, and a tactical heads-up display - designed and built from scratch as a Grade 12 TEJ4M Computer Engineering capstone.
 
-**Author:** Zyad Hossameldien
-**Partner:** Algasem Zabarah
-**Course:** TEJ4M Computer Engineering — Capstone 2026
+**Authors:** Zyad Hossameldien, Algasem Zabarah
+**Course:** TEJ4M Computer Engineering - Capstone 2026
 **School:** Earl of March Secondary School
 
 ---
@@ -19,11 +18,11 @@ The goal was to demonstrate a complete, controllable, stable hover using a contr
 
 The control signal flows through five stages:
 
-1. **Pilot Controller (Transmitter)** — An Arduino Nano reads two analog joysticks (throttle, yaw, roll, pitch) and two switches, packs them into a compact 7-byte packet with an integrity checksum, and broadcasts it over an NRF24L01 PA+LNA radio module.
-2. **Radio Link** — A one-way 2.4 GHz link at 250 kbps with 16-bit CRC and a custom XOR checksum for packet integrity.
-3. **Drone Receiver** — A second Arduino Nano receives and validates each packet, rejecting corrupt ones and holding the last good values through noise bursts, then outputs six standard 1000–2000 µs PWM channels.
-4. **PWM-to-SBUS Converter (T1P)** — Converts the receiver's PWM channels into a single SBUS stream for the flight controller.
-5. **Flight Controller** — A JHEMCU GF30F405 running Betaflight reads SBUS, runs the PID stabilization loops, and drives the four ESCs and motors.
+1. **Pilot Controller (Transmitter)** - An Arduino Nano reads two analog joysticks (throttle, yaw, roll, pitch) and two switches, packs them into a compact 7-byte packet with an integrity checksum, and broadcasts it over an NRF24L01 PA+LNA radio module.
+2. **Radio Link** - A one-way 2.4 GHz link at 250 kbps with 16-bit CRC and a custom XOR checksum for packet integrity.
+3. **Drone Receiver** - A second Arduino Nano receives and validates each packet, rejecting corrupt ones and holding the last good values through noise bursts, then outputs six standard 1000–2000 µs PWM channels.
+4. **PWM-to-SBUS Converter (T1P)** - Converts the receiver's PWM channels into a single SBUS stream for the flight controller.
+5. **Flight Controller** - A JHEMCU GF30F405 running Betaflight reads SBUS, runs the PID stabilization loops, and drives the four ESCs and motors.
 
 Separately, an **ESP32-CAM** streams live MJPEG video into a custom tactical HUD web page (radar, telemetry panels, altitude graph, threat overlay) viewable at `http://drone.local`.
 
@@ -47,9 +46,9 @@ Separately, an **ESP32-CAM** streams live MJPEG video into a custom tactical HUD
 
 | File | Description |
 |---|---|
-| `Horizon_Transmitter.ino` | Pilot controller firmware — reads sticks/switches, builds and broadcasts the radio packet |
-| `Horizon_Receiver.ino` | Drone receiver firmware — validates packets and outputs PWM channels to the flight controller |
-| `Horizon_Camera.ino` | ESP32-CAM firmware — live MJPEG video stream and the tactical HUD web interface |
+| `Horizon_Transmitter.ino` | Pilot controller firmware - reads sticks/switches, builds and broadcasts the radio packet |
+| `Horizon_Receiver.ino` | Drone receiver firmware - validates packets and outputs PWM channels to the flight controller |
+| `Horizon_Camera.ino` | ESP32-CAM firmware - live MJPEG video stream and the tactical HUD web interface |
 
 ## Radio protocol
 
@@ -68,9 +67,9 @@ Each packet is 7 bytes: throttle, pitch, roll, yaw, aux1, aux2, and a checksum. 
 
 Building a radio link from scratch surfaced real engineering problems that the firmware was designed to solve:
 
-- **Checksum packet rejection** — Motor electrical noise (EMI) was corrupting radio packets and causing random disarms. Adding an XOR checksum lets the receiver throw out corrupted packets instead of acting on garbage data.
-- **Tiered failsafe** — Short signal gaps are ridden out on the last-known-good values; only a sustained dropout (>1.2 s) triggers a full failsafe that zeroes the throttle.
-- **EMI hardening** — The SBUS signal line is twisted with its ground and routed away from the high-current motor wiring to reject motor-induced noise.
+- **Checksum packet rejection** - Motor electrical noise (EMI) was corrupting radio packets and causing random disarms. Adding an XOR checksum lets the receiver throw out corrupted packets instead of acting on garbage data.
+- **Tiered failsafe** - Short signal gaps are ridden out on the last-known-good values; only a sustained dropout (>1.2 s) triggers a full failsafe that zeroes the throttle.
+- **EMI hardening** - The SBUS signal line is twisted with its ground and routed away from the high-current motor wiring to reject motor-induced noise.
 
 ## Build and flash
 
