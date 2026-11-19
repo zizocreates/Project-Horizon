@@ -2,6 +2,10 @@
 
 A custom-built FPV quadcopter with a fully hand-made 2.4 GHz radio link, onboard FPV video, and a tactical heads-up display - designed and built from scratch as a Grade 12 TEJ4M Computer Engineering capstone.
 
+<p align="center"><img src="images/horizon.jpg" alt="The finished Project Horizon quadcopter on a classroom floor, with its radio antenna and camera" width="420"></p>
+
+Videos of it flying: [zizocreates.pages.dev/work](https://zizocreates.pages.dev/work/#project-horizon)
+
 **Authors:** Zyad Hossameldien, Algasem Zabarah
 
 **Course:** TEJ4M Computer Engineering - Capstone 2026
